@@ -1,0 +1,544 @@
+###################################
+###  GIT with Mosh :            ###
+###################################
+
+git config --global code.editor "code --wait"
+
+git config --global -e
+
+git config --global code.autocrlf input(mac/linux) or true -->(win)  
+
+git config --help  (space --> next page , q --> exit)
+
+git config -h (short summary of this command)
+
+======================================================================================================
+======================================================================================================
+
+git status
+
+git add file.ext
+
+git add .
+
+git commit -m "msg"
+
+git commit -am "msg"
+
+git ls-files
+
+git mv 1.txt 1.js   ===> rename files
+
+git rm --cached -r(recursive) bin/ 
+
+======================================================================================================
+======================================================================================================
+git status -s 
+
+- | - 
+
+staging area | working directory 
+
+A --> added
+M --> modified 
+D --> deleted
+?? --> untracked file 
+
+======================================================================================================
+======================================================================================================
+git diff --staged
+
+git diff 
+
+git config --global diff.tool vscode
+git config --global difftool.vscode.cmd "code --wait --diff $LOCAL $REMOTE"
+
+git diff --cached
+
+git config --global -e
+
+git difftool --staged
+git difftool
+======================================================================================================
+======================================================================================================
+
+git log 
+
+git log --oneline --reverse
+
+------------------------------------
+
+git show HAED
+
+git show HAED~1
+
+git show HAED~1:help.txt
+
+//==
+git ls-tree HEAD~1
+
+100644 blob e660fd93d3196215552065b1e63bf6a2f393ed86	.gitignore
+------ 
+blob --> file
+tree --> directory
+
+
+git show e660f
+
+======================================================================================================
+======================================================================================================
+git restore --staged index.html  --> remove from staging area
+
+git restore index.html  --> restore to last commit
+
+git restore .  --> all files
+
+git clean -fd(force,dir)  --> also remove untracked files 
+
+git restore --source=HEAD~1 file1.js // restore file from last commit
+======================================================================================================
+======================================================================================================
+git log 
+
+git log --oneline 
+git log --oneline --stat 
+git log --oneline --patch 
+
+git log --oneline --auther="Ali Farahani"
+git log --online --before="2020-01-01"
+git log --online --after="2020-01-01"
+git log --online --after="yesterday"
+git log --online --after="one day ago"
+git log --online --grep="added"
+git log --online --S"hello()" --patch  --> all commits that add or delete this line 
+git log --oneline ef9bb2e(start commit)..d6e104e(target commit) 
+
+git log --oneline --patch -- 1.txt
+
+git log --oneline --pretty=format:"%Cgreen %an %Cresetcommited %H(or %h) on %cd"
+
+======================================================================================================
+======================================================================================================
+git config --global alias.unstaged "restore --staged ."
+======================================================================================================
+======================================================================================================
+git show HEAD~2:section/creating-snapshpts/staging-changes.txt
+
+git show HEAD~2 --name-only
+
+git show HEAD~2 --name-status
+======================================================================================================
+======================================================================================================
+git diff HEAD~2 HEAD 1.txt 
+
+git diff HEAD~2 HEAD --name-only 
+git diff HEAD~2 HEAD --name-status
+======================================================================================================
+======================================================================================================
+git checkout 763gfv
+======================================================================================================
+======================================================================================================
+git bisect start
+
+git bisect bad
+
+git bisect good 
+
+gity bisect reset
+======================================================================================================
+======================================================================================================
+git shortlog -n -s -e --after="" --before=""
+======================================================================================================
+======================================================================================================
+git log --oneline 1.txt
+git log --oneline --stat 1.txt
+git log --oneline --patch 1.txt
+======================================================================================================
+======================================================================================================
+git blame -e -L 1,3 1.txt
+======================================================================================================
+======================================================================================================
+
+git tag v1.0 78erd3
+
+git tag
+
+git tag -d(delete) v1.0
+
+git checkout v1.0
+
+git tag -a v1.0 -m "message"
+
+git tag -n
+
+git show v1.0
+
+
+======================================================================================================
+======================================================================================================
+git branch brance_name
+
+git switch branch_name
+
+git branch -m(rename) bugfix bugfix/signup-form
+
+git branch -d(delete) branch_name
+
+git branch -D(force delete) branch_name
+======================================================================================================
+======================================================================================================
+git log master..bugfix/signup-form (commits are in bugfix/signup-form and are not in master)
+
+git diff master..bugfix/signup-form 
+
+git diff bugfix/signup-form (if you are in master)
+======================================================================================================
+======================================================================================================
+git stash posh -m "message"
+git stash -a(add file) -m "message"
+
+git stash show stash@{0} or $1
+
+git stash apply stash@{0} or $1
+git stash pop stash@{0} or $1
+
+git stash drop $1
+
+git stash clear
+
+======================================================================================================
+======================================================================================================
+git merge bugfix/signup-form
+git switch -C bugfix/login-form
+git merge --no-ff(no fast forward) bugfix/login-form
+
+git config merge.ff(fast forward) no
+git config --global merge.ff no
+======================================================================================================
+======================================================================================================
+git branch --merged
+git branch --no-merged
+======================================================================================================
+======================================================================================================
+conflict :
+git merge br
+git add 
+git commit
+
+git merge --abort (when you are in mergging)
+
+
+merge tools : 
+------
+* Kdiff
+* P4Merge
+* WinMerge (windows only)
+
+git config --global merg.tool p4merge
+git config --global mergetool.p4merge.path /usr/local/bin/p4merge
+git config --global mergetoll.keepBackup false
+
+git mergetool
+
+++++++
+
+git config --global merge.tool p4merge 
+git config --global mergetool.p4merge.path /usr/local/bin/p4merge
+git config --global mergetool.prompt false
+
+git config --global diff.tool p4merge
+git config --global difftool.p4merge.path /usr/local/bin/p4merge
+git config --global difftool.prompt false
+
+++++++
+
+
+
+======================================================================================================
+======================================================================================================
+--hard (discards local changes)
+--mixed (unstages files)
+--soft (removes the commit only)
+
+working directory : git reset --hard HEAD~1
+
+staging area : git reset --mixed HEAD~1
+
+last snapshot : git reset --soft HEAD~1
+
+
+git reset --hard HEAD~1
+git reset --hard 87ffgt(revert to last commit you reset)
+
+git revert -m 1 (revert to first parent when you merged)
+
+======================================================================================================
+======================================================================================================
+git merge --squash bugfix/upload-photo
+
+git commit -m "msg"
+
+git branch --merged
+git branch --no-merged
+
+git branch -d(-D force) bugfix/upload-photo
+
+======================================================================================================
+======================================================================================================
+
+ * go to feature/shopping-cart 
+git rebase master
+ * go to master 
+
+ git rebase --continue (tell git to apply next commit on top of master)
+ git rebase --skip (skipp current commit and move to next commit )
+ git rebase --abort
+
+git merge feature/shopping-cart (for both branches pointing to same commit)
+
+======================================================================================================
+======================================================================================================
+git cherry-pick a1f8220
+
+git commit 
+
+
+======================================================================================================
+======================================================================================================
+git restore --source=feature/login -- a.txt
+======================================================================================================
+======================================================================================================
+
+git clone url newName
+
+git remote
+git remote -v
+
+======================================================================================================
+======================================================================================================
+
+git fetch (origin branch_name)
+
+git branch -vv
+
+git merge origin/master
+
+======================================================================================================
+======================================================================================================
+
+pull = fetch + merge 
+
+git pull 
+
+git pull --rebase
+
+======================================================================================================
+======================================================================================================
+
+git push origin master 
+git push 
+git push -f(force --> never use it)
+
+======================================================================================================
+======================================================================================================
+
+git config --global credential.helper cache (cache for 15 min)
+
+* mac : keychain
+
+* windows : windows credential manager
+
+git config --global credential.helper osxcredential
+
+======================================================================================================
+======================================================================================================
+
+git tag v1.0
+
+git push origin v1.0
+
+git push origin --delete v1.0 (delete from origin)
+
+======================================================================================================
+======================================================================================================
+
+git branch -vv  (local and remote branches)
+
+git branch -r (all the remote tracking branches)
+
+git push -u(--set-upstream) origin feature/change-pasword
+
+git push -d (delete) origin feature/change-pasword
+
+======================================================================================================
+======================================================================================================
+
+git switch -C feature/change-password origin/feature/change-password
+
+git remote prune origin
+
+======================================================================================================
+======================================================================================================
+
+fork : 
+
+git clone ... 
+
+push ..
+
+git remote add upstream https://github.com/Ali-MFarahani/nuxt.git
+
+origin	git@github.com:AliMasteriFarahani/nuxt.git (fetch)
+origin	git@github.com:AliMasteriFarahani/nuxt.git (push)
+
+upstream  https://github.com/Ali-MFarahani/nuxt.git (fetch)
+upstream  https://github.com/Ali-MFarahani/nuxt.git (push)
+
+git remote rename upstream base
+
+git remote rm base 
+
+git merge base/master 
+
+======================================================================================================
+======================================================================================================
+
+git revert HEAD~3..HAED ( or HEAD~3..)
+
+
+git revert --no-commit HEAD~3
+git revert --abort
+git revert --continue
+
+======================================================================================================
+======================================================================================================
+
+git reflog 
+
+git reflog show feature
+
+git reset --hard HEAD@{1}
+
+git reflog show feature
+
+======================================================================================================
+======================================================================================================
+git commit --amend
+
+======================================================================================================
+======================================================================================================
+amend earlier commits : 
+
+git rebase -i commitId
+
+/home/ali-farahani/Desktop/git-Mosh/.git/rebase-merge/git-rebase-todo           
+edit d197570 login form
+pick 02d57b1 register form
+pick a9a2809 shopping card created
+pick 66df946 admin panel created
+
+echo 'license' > licence.txt
+
+git commit --amend 
+
+git rebase --abort
+
+git rebase --continue
+
+======================================================================================================
+======================================================================================================
+drop commit : 
+
+git rebase -i d197570~1( or ^ --> parent)
+
+
+/home/ali-farahani/Desktop/git-Mosh/.git/rebase-merge/git-rebase-todo           
+pick d197570 login form -- > drop d197570 login form ( or delete this line )
+pick 02d57b1 register form
+pick a9a2809 shopping card created
+pick 66df946 admin panel created
+
+get conflict
+
+git mergetool
+git rebase --continue 
+
+
+======================================================================================================
+======================================================================================================
+
+git rebase -r 02d57b1^
+
+/home/ali-farahani/Desktop/git-Mosh/.git/rebase-merge/git-rebase-todo
+reword d197570 login form  (for rename commit message)
+pick 02d57b1 register form
+pick a9a2809 shopping card created
+pick 66df946 admin panel created
+
+======================================================================================================
+======================================================================================================
+
+git squash :
+
+
+pick 6d80af9 register form added
+squash dc9fd74 shopping card created
+squash 93fd3fb admin panel created
+pick ab9d634 another admin
+pick 7e8d801 new user
+
+pick 6d80af9 register form added
+squash dc9fd74 shopping card created
+squash 93fd3fb admin panel created
+pick ab9d634 another admin
+pick 7e8d801 new user
+
+======================================================================================================
+======================================================================================================
+
+spliting commits :
+
+git rebase -i 6d80af9
+
+
+pick 6d80af9 register form added
+edit dc9fd74 shopping card created
+pick 93fd3fb admin panel created
+pick ab9d634 another admin
+pick 7e8d801 new user
+
+
+git reset (--mixed) HEAD^
+
+git commit ....
+
+git rebase continue
+
+======================================================================================================
+======================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

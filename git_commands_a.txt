@@ -1,0 +1,106 @@
+################################################################
+## DOCUMENTATIONS :                                           ##
+################################################################
+git ::
+scm : source control managment
+vcs : version control system
+----------------------------------
+==================================
+How git helps us ?
+................
+* Repository :
+  - git helps us to create repository (local,remote)
+
+* Versions :
+ - git stores differnt version of source
+
+* comparision :
+ - git enables comparision of differnt version of source code 
+
+* Collaboration :
+ - git promotes collaboration among developers
+
+============================================================== 
+==============================================================
+GIT Statuses : 
+
+* Modified :
+ - some files have changes and are not in staging area
+
+* Staging :
+ - files are in staging area and ready to commit 
+
+* Commited :
+- files are commited and ready to push 
+==============================================================
+Git != Github :
+git : vcs and scm 
+github : cloud-base hosting service  manage git repositories
+==============================================================
+##############################################################
+
+
++-+-+-+-+-+-+-+-+-+-+-+-+
+GIT Commands ::        -+
++-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+git --version 
+---------------------------------------------------------------
+git --help  , git --help (init)
+---------------------------------------------------------------
+git init    --> initiate project
+---------------------------------------------------------------
+git add ( . or file_name.extention )
+---------------------------------------------------------------
+git commit -m "message"
+---------------------------------------------------------------
+git commit -a(add) -m(message) "message"
+---------------------------------------------------------------
+
+
+git restore --staged ( * or file_name.extention )  
+
+'--> remove from staging area
+----------------
+git restore ( * or file_name.extention )
+'--> reset some or all file changes to last commit
+''--> work after removing from staging area 
+
+
+---------------------------------------------------------------
+git log  --> show all commits with details
+
+git log --oneline  --> show all commits without details
+
+git log --oneline --graph --all
+
+
+---------------------------------------------------------------
+git config --list
+
+git config --global user.name=.......
+---------------------------------------------------------------
+
+
+git clone (URL)
+
+git clone -b branch_name (URL)
+---------------------------------------------------------------
+git remote add origin(custom) master
+
+git remote -- > show origin
+
+
+---------------------------------------------------------------
+git push -u(upstream) origin master
+---------------------------------------------------------------
+git pull --> get and update changes
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
